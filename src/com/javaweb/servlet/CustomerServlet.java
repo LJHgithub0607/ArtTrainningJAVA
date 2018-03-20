@@ -31,6 +31,7 @@ public class CustomerServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String methodName=request.getServletPath();
+		System.out.println(methodName);
 		methodName=methodName.substring(1, methodName.length()-3);
 		try {
 			Method method=getClass().getDeclaredMethod(methodName, HttpServletRequest.class,HttpServletResponse.class);
@@ -84,7 +85,6 @@ public class CustomerServlet extends HttpServlet {
 		String phone=request.getParameter("phone");
 		CriteriaCustomer cc=new CriteriaCustomer(name, address, phone);
 		List<Customer> customers=customerDAO.getForListWithCriteriaCustomer(cc);
-		
 		request.setAttribute("customers", customers);
 		request.getRequestDispatcher("/index.jsp").forward(request, response);
 	}

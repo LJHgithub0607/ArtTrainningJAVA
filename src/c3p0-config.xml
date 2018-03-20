@@ -2,9 +2,9 @@
 <c3p0-config>
   <named-config name="mvcApp"> 
   	<property name="user">root</property>
-    <property name="password">6779861</property>
+    <property name="password">root</property>
     <property name="driverClass">com.mysql.jdbc.Driver</property>
-    <property name="jdbcUrl">jdbc:mysql:///test</property>
+    <property name="jdbcUrl">jdbc:mysql://111.230.175.87:3306/test</property>
   	
     <property name="acquireIncrement">5</property>
     <property name="initialPoolSize">10</property>
