@@ -5,6 +5,13 @@ public class Course {
 	private Integer t_Course_theCourse_ID;
 	private Integer t_Couser_Student_ID;
 	private Integer t_Course_Total_Time;
+	private String 	t_Course_DateOfLeave;
+	public String getT_Course_DateOfLeave() {
+		return t_Course_DateOfLeave;
+	}
+	public void setT_Course_DateOfLeave(String t_Course_DateOfLeave) {
+		this.t_Course_DateOfLeave = t_Course_DateOfLeave;
+	}
 	public Integer getT_Course_ID() {
 		return t_Course_ID;
 	}
@@ -32,7 +39,8 @@ public class Course {
 	@Override
 	public String toString() {
 		return "Course [t_Course_ID=" + t_Course_ID + ", t_Course_theCourse_ID=" + t_Course_theCourse_ID
-				+ ", t_Couser_Student_ID=" + t_Couser_Student_ID + ", t_Course_Total_Time=" + t_Course_Total_Time + "]";
+				+ ", t_Couser_Student_ID=" + t_Couser_Student_ID + ", t_Course_Total_Time=" + t_Course_Total_Time
+				+ ", t_Course_DateOfLeave=" + t_Course_DateOfLeave + "]";
 	}
 	
 }

@@ -1,18 +1,19 @@
 package com.javaweb.domain;
 
 public class Institution {
-	private Integer t_Institution_Id;
+	private Integer t_Institution_ID;
 	private String t_Institution_User_Name;
 	private String t_Institution_User_Password;
 	private String t_Institution_Real_Name;
 	private String t_Institution_Phone;
 	private String t_Institution_Adress;
 	private String t_Institution_Assessment;
-	public Integer getT_Institution_Id() {
-		return t_Institution_Id;
+
+	public Integer getT_Institution_ID() {
+		return t_Institution_ID;
 	}
-	public void setT_Institution_Id(Integer t_Institution_Id) {
-		this.t_Institution_Id = t_Institution_Id;
+	public void setT_Institution_ID(Integer t_Institution_ID) {
+		this.t_Institution_ID = t_Institution_ID;
 	}
 	public String getT_Institution_User_Name() {
 		return t_Institution_User_Name;
@@ -52,7 +53,7 @@ public class Institution {
 	}
 	@Override
 	public String toString() {
-		return "Institution [t_Institution_Id=" + t_Institution_Id + ", t_Institution_User_Name="
+		return "Institution [t_Institution_Id=" + t_Institution_ID + ", t_Institution_User_Name="
 				+ t_Institution_User_Name + ", t_Institution_User_Password=" + t_Institution_User_Password
 				+ ", t_Institution_Real_Name=" + t_Institution_Real_Name + ", t_Institution_Phone="
 				+ t_Institution_Phone + ", t_Institution_Adress=" + t_Institution_Adress + ", t_Institution_Assessment="
