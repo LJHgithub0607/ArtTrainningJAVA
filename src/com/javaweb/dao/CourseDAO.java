@@ -7,8 +7,7 @@ import com.javaweb.domain.Course;
 public interface CourseDAO {
 	public void updatenew(Course course);
 	public void save(Course course);
-	public void delete(Course course);
+	public void delete(Integer ID);
 	public Course getFromID(Integer ID);
-	public Course getFromStudentID(Integer ID);
 	public List<Course> getForListWithStudentID(Integer ID);
 }

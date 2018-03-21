@@ -24,11 +24,11 @@ public class CustomerDAOJdbcImpl extends DAO<Customer> implements CustomerDAO {
 
 	@Override
 	public Customer get(Integer id) {
-		String sql="SELECT id,name,address,phone from customers where id=?";
+		String sql="SELECT * from customers where id=?";
 		return get(sql, id);
 	}
 	public Customer get(String name){
-		String sql="SELECT id,name,address,phone from customers where name=?";
+		String sql="SELECT * from customers where name=?";
 		return get(sql, name);
 	}
 
@@ -47,7 +47,7 @@ public class CustomerDAOJdbcImpl extends DAO<Customer> implements CustomerDAO {
 
 	@Override
 	public List<Customer> getForListWithCriteriaCustomer(CriteriaCustomer cc) {
-		String sql="SELECT id,name,address,phone from customers where name like ? AND address like ? AND phone like ?";
+		String sql="SELECT * from customers where name like ? AND address like ? AND phone like ?";
 		return getForList(sql, cc.getName(),cc.getAddress(),cc.getPhone());
 	}
 
