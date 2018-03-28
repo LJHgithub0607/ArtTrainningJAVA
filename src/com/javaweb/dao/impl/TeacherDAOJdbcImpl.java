@@ -10,14 +10,14 @@ public class TeacherDAOJdbcImpl extends DAO<Teacher> implements TeacherDAO{
 
 	@Override
 	public void updatenew(Teacher teacher) {
-		String sql="update t_Teacher SET t_Teacher_User_Name=?,t_Teacher_User_PAssword=?,t_Teacher_Real_Name=?,t_Teacher_Institution=?,"
+		String sql="update t_Teacher SET t_Teacher_User_Name=?,t_Teacher_User_PAssword=?,t_Teacher_RealName=?,t_Teacher_Institution=?,"
 				+ "t_Teacher_Phone_Number=?,t_Teacher_Assessment=?,t_Teacher_ApprovalStatus=? WHERE t_Teacher_ID=?";
 		update(sql, teacher.getT_Teacher_User_Name(),teacher.getT_Teacher_User_PAssword(),teacher.getT_Teacher_Real_Name(),teacher.getT_Teacher_Institution(),teacher.getT_Teacher_Phone_Number(),teacher.getT_Teacher_Assessment(),teacher.getT_Teacher_ApprovalStatus(),teacher.getT_Teacher_ID());
 	}
 
 	@Override
 	public void save(Teacher teacher) {
-		String sql="INSERT INTO t_Teacher(t_Teacher_User_Name,t_Teacher_User_PAssword,t_Teacher_Real_Name,t_Teacher_Institution,"
+		String sql="INSERT INTO t_Teacher(t_Teacher_User_Name,t_Teacher_User_PAssword,t_Teacher_RealName,t_Teacher_Institution,"
 				+ "t_Teacher_Phone_Number,t_Teacher_Assessment) VALUES(?,?,?,?,?,?)";
 		update(sql, teacher.getT_Teacher_User_Name(),teacher.getT_Teacher_User_PAssword(),teacher.getT_Teacher_Real_Name(),teacher.getT_Teacher_Institution(),teacher.getT_Teacher_Phone_Number(),teacher.getT_Teacher_Assessment());
 	}

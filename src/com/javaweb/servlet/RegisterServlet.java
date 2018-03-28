@@ -56,8 +56,8 @@ public class RegisterServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String methodName=request.getRequestURI();
 		System.out.println(methodName);
-		methodName=methodName.substring(23, methodName.length());
-		System.out.println(methodName);
+		methodName=methodName.substring(18, methodName.length()); //different between each servlet   for example:/javaweb/CourseServlet/example
+		System.out.println(methodName); 
 		try {
 			Method method=getClass().getDeclaredMethod(methodName, HttpServletRequest.class,HttpServletResponse.class);
 			method.invoke(this, request,response);
