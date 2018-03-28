@@ -19,7 +19,7 @@ import net.sf.json.JSONSerializer;
 /**
  * Servlet implementation class CourseServlet
  */
-@WebServlet("/CourseServlet")
+@WebServlet("/CourseServlet/*")
 public class CourseServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -42,9 +42,10 @@ public class CourseServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String methodName=request.getServletPath();
+		String methodName=request.getRequestURI();
 		System.out.println(methodName);
-		methodName=methodName.substring(1, methodName.length()-3);
+		methodName=methodName.substring(23, methodName.length());
+		System.out.println(methodName);
 		try {
 			Method method=getClass().getDeclaredMethod(methodName, HttpServletRequest.class,HttpServletResponse.class);
 			method.invoke(this, request,response);

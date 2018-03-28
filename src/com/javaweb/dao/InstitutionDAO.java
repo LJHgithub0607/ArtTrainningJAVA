@@ -9,4 +9,5 @@ public interface InstitutionDAO {
 	public void save(Institution institution);
 	public void delete(Integer ID);
 	public Institution getFromID(Integer ID);
+	public Institution getFromUserName(String username);
 }

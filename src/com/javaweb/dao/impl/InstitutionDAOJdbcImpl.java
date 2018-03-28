@@ -29,8 +29,13 @@ public class InstitutionDAOJdbcImpl extends DAO<Institution> implements Institut
 
 	@Override
 	public Institution getFromID(Integer ID) {
-		String sql="SELECT * WHERE t_Institution_ID = ? ";
+		String sql="SELECT * FROM t_Institution WHERE t_Institution_ID = ? ";
 		return get(sql, ID);
 	}
-
+	
+	@Override
+	public Institution getFromUserName(String username){
+		String sql="SELECT * FROM t_Institution WHERE t_Institution_User_Name = ? ";
+		return get(sql, username);
+	}
 }

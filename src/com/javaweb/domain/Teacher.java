@@ -8,7 +8,7 @@ public class Teacher {
 	private String t_Teacher_Institution;
 	private String t_Teacher_Phone_Number;
 	private String t_Teacher_Assessment;
-
+	private Integer t_Teacher_ApprovalStatus;
 	public Integer getT_Teacher_ID() {
 		return t_Teacher_ID;
 	}
@@ -36,6 +36,12 @@ public class Teacher {
 	public String getT_Teacher_Institution() {
 		return t_Teacher_Institution;
 	}
+	public Integer getT_Teacher_ApprovalStatus() {
+		return t_Teacher_ApprovalStatus;
+	}
+	public void setT_Teacher_ApprovalStatus(Integer t_Teacher_ApprovalStatus) {
+		this.t_Teacher_ApprovalStatus = t_Teacher_ApprovalStatus;
+	}
 	public void setT_Teacher_Institution(String t_Teacher_Institution) {
 		this.t_Teacher_Institution = t_Teacher_Institution;
 	}
@@ -53,10 +59,11 @@ public class Teacher {
 	}
 	@Override
 	public String toString() {
-		return "Teacher [t_Teacher_Id=" + t_Teacher_ID + ", t_Teacher_User_Name=" + t_Teacher_User_Name
+		return "Teacher [t_Teacher_ID=" + t_Teacher_ID + ", t_Teacher_User_Name=" + t_Teacher_User_Name
 				+ ", t_Teacher_User_PAssword=" + t_Teacher_User_PAssword + ", t_Teacher_Real_Name="
 				+ t_Teacher_Real_Name + ", t_Teacher_Institution=" + t_Teacher_Institution + ", t_Teacher_Phone_Number="
-				+ t_Teacher_Phone_Number + ", t_Teacher_Assessment=" + t_Teacher_Assessment + "]";
+				+ t_Teacher_Phone_Number + ", t_Teacher_Assessment=" + t_Teacher_Assessment
+				+ ", t_Teacher_ApprovalStatus=" + t_Teacher_ApprovalStatus + "]";
 	}
 	
 	

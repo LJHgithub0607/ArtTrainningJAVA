@@ -8,9 +8,16 @@ public class Institution {
 	private String t_Institution_Phone;
 	private String t_Institution_Adress;
 	private String t_Institution_Assessment;
+	private String t_Institution_ApprovalWait;
 
 	public Integer getT_Institution_ID() {
 		return t_Institution_ID;
+	}
+	public String getT_Institution_ApprovalWait() {
+		return t_Institution_ApprovalWait;
+	}
+	public void setT_Institution_ApprovalWait(String t_Institution_ApprovalWait) {
+		this.t_Institution_ApprovalWait = t_Institution_ApprovalWait;
 	}
 	public void setT_Institution_ID(Integer t_Institution_ID) {
 		this.t_Institution_ID = t_Institution_ID;
@@ -57,7 +64,7 @@ public class Institution {
 				+ t_Institution_User_Name + ", t_Institution_User_Password=" + t_Institution_User_Password
 				+ ", t_Institution_Real_Name=" + t_Institution_Real_Name + ", t_Institution_Phone="
 				+ t_Institution_Phone + ", t_Institution_Adress=" + t_Institution_Adress + ", t_Institution_Assessment="
-				+ t_Institution_Assessment + "]";
+				+ t_Institution_Assessment + ", t_Institution_ApprovalWait=" + t_Institution_ApprovalWait + "]";
 	}
 	
 	
