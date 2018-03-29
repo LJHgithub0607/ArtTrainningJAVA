@@ -2,7 +2,7 @@ package com.javaweb.domain;
 
 public class Course {
 	private Integer t_Course_ID;
-	private Integer t_Course_theCourse_ID;
+	private Integer t_Course_theCourse_ID;//total_courseID
 	private Integer t_Couser_Student_ID;
 	private Integer t_Course_Total_Time;
 	private String 	t_Course_DateOfLeave;

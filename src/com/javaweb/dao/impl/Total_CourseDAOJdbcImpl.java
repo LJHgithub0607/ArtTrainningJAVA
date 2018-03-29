@@ -52,4 +52,10 @@ public class Total_CourseDAOJdbcImpl extends DAO<Total_Course> implements Total_
 		return getForList(sql, InstitutionID);
 	}
 
+	@Override
+	public Integer getID(String name, Integer teacherID, Integer courseinstitutionID) {
+		String sql="SELECT t_Course_ID FROM t_Total_Course WHERE t_Course_Name=? AND t_Course_Teacher_ID=? AND t_Course_Institution_ID=?";
+		return get(sql, name,teacherID,courseinstitutionID).getT_Course_ID();
+	}
+
 }

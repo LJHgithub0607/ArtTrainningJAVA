@@ -60,7 +60,7 @@ public class Login extends HttpServlet {
 		
 	}
 	
-	private void check(HttpServletRequest request,HttpServletResponse response) throws ServletException,IOException {
+	private void Check(HttpServletRequest request,HttpServletResponse response) throws ServletException,IOException {
         response.setContentType("text/html;charset=utf-8");  
         request.setCharacterEncoding("utf-8");  
         response.setCharacterEncoding("utf-8");  
