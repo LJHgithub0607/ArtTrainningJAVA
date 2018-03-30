@@ -5,12 +5,12 @@ import java.io.PrintWriter;
 import java.lang.reflect.Method;
 import java.sql.Date;
 import java.sql.Time;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -32,7 +32,7 @@ import net.sf.json.JSONSerializer;
 public class TotalCourseServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private Total_CourseDAO total_CourseDAO=new Total_CourseDAOJdbcImpl();
-    ExecutorService cachedService = Executors.newCachedThreadPool();
+    ExecutorService pool=Executors.newCachedThreadPool();
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -118,7 +118,10 @@ public class TotalCourseServlet extends HttpServlet {
     	total_course.setT_Course_Max_Students(maxstudents);
 		
     	total_CourseDAO.save(total_course);
-    	cachedService.execute(new TimerThreadExecutor(deadlinedate, total_CourseDAO.getID(name, teacherID, courseinstitutionID)));
+    	Integer courseID =total_CourseDAO.getID(name, teacherID, courseinstitutionID);
+    	java.util.Date now=new java.util.Date();
+    	pool.execute(new TimerThreadExecutor(courseID,now.getTime()-deadlinedate.getTime()));
+    	
 	}
 
 }
