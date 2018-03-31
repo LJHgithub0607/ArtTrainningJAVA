@@ -18,15 +18,36 @@ public class Total_Course {
 	private Time t_Course_Day_End_Time;
 	private Integer t_Course_Times;//this Course total Course Time of all students;
 	private Integer t_Course_Max_Students;
+	private Integer t_Course_Price;
+	private String t_Course_Category;
+	private String t_Course_Assessment;
 
 	public Integer getT_Course_ID() {
 		return t_Course_ID;
+	}
+	public String getT_Course_Assessment() {
+		return t_Course_Assessment;
+	}
+	public void setT_Course_Assessment(String t_Course_Assessment) {
+		this.t_Course_Assessment = t_Course_Assessment;
 	}
 	public void setT_Course_ID(Integer t_Course_ID) {
 		this.t_Course_ID = t_Course_ID;
 	}
 	public String getT_Course_Name() {
 		return t_Course_Name;
+	}
+	public Integer getT_Course_Price() {
+		return t_Course_Price;
+	}
+	public void setT_Course_Price(Integer t_Course_Price) {
+		this.t_Course_Price = t_Course_Price;
+	}
+	public String getT_Course_Category() {
+		return t_Course_Category;
+	}
+	public void setT_Course_Category(String t_Course_Category) {
+		this.t_Course_Category = t_Course_Category;
 	}
 	public void setT_Course_Name(String t_Course_Name) {
 		this.t_Course_Name = t_Course_Name;
@@ -99,13 +120,15 @@ public class Total_Course {
 	}
 	@Override
 	public String toString() {
-		return "Total_Course [t_Course_Id=" + t_Course_ID + ", t_Course_Name=" + t_Course_Name
+		return "Total_Course [t_Course_ID=" + t_Course_ID + ", t_Course_Name=" + t_Course_Name
 				+ ", t_Course_Teacher_ID=" + t_Course_Teacher_ID + ", t_Teacher_Students_ID=" + t_Teacher_Students_ID
 				+ ", t_Course_Institution_ID=" + t_Course_Institution_ID + ", t_Course_Classrooms="
 				+ t_Course_Classrooms + ", t_Course_Deadline_Date=" + t_Course_Deadline_Date + ", t_Course_Start_Date="
 				+ t_Course_Start_Date + ", t_Course_Week_Day=" + t_Course_Week_Day + ", t_Course_Day_Start_Time="
 				+ t_Course_Day_Start_Time + ", t_Course_Day_End_Time=" + t_Course_Day_End_Time + ", t_Course_Times="
-				+ t_Course_Times + ", t_Course_Max_Students=" + t_Course_Max_Students + "]";
+				+ t_Course_Times + ", t_Course_Max_Students=" + t_Course_Max_Students + ", t_Course_Price="
+				+ t_Course_Price + ", t_Course_Category=" + t_Course_Category + ", t_Course_Assessment="
+				+ t_Course_Assessment + "]";
 	}
    
 }

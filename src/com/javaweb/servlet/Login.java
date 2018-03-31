@@ -70,28 +70,20 @@ public class Login extends HttpServlet {
         String password=request.getParameter("password");
 
         Map<String, Object>  map=new HashMap<String, Object>();
-        if (teacherDAO.getFromUseName(username)!=null) {
-        	String result="";
-        	result=password.equals(teacherDAO.getFromUseName(username).getT_Teacher_User_PAssword())?"Teacher-Success":"WrongPassword";
-        	map.put("result", result);
-		}else {
-			if (studentDAO.getFromUseName(username)!=null) {
-	        	String result="";
-	        	result=password.equals(studentDAO.getFromUseName(username).getT_Sudent_User_Password())?"Student-Success":"WrongPassword";
-	        	map.put("result", result);
-			}else{
-				if (institutionDAO.getFromUserName(username)!=null) {
-		        	String result="";
-		        	result=password.equals(institutionDAO.getFromUserName(username).getT_Institution_User_Password())?"Institution-Success":"WrongPassword";
-		        	map.put("result", result);
-				}else{
-					String result="UserDidn'tExsit";
-					map.put("result", result);
-				}
-			}
+        String result="";
+        if (studentDAO.getFromUseName(username)!=null) {
+        	result=password.equals(studentDAO.getFromUseName(username).getT_Sudent_User_Password())?"1":"0";
+        }else{
+        	result="2";
+        }
+        
+        if (result.equals("1")) {
+			map.put("studentID", studentDAO.getFromUseName(username).getT_Sudent_ID());
+			map.put("authority", studentDAO.getFromUseName(username).getT_Student_Authority());
 		}
-            String jsonString=JSONSerializer.toJSON(map).toString();  
-            writer.println(jsonString);  
+        map.put("result", result);
+        String jsonString=JSONSerializer.toJSON(map).toString();  
+        writer.println(jsonString);  
        
         writer.flush();  
         writer.close();  

@@ -5,7 +5,7 @@ public class Teacher {
 	private String t_Teacher_User_Name;
 	private String t_Teacher_User_PAssword;
 	private String t_Teacher_Real_Name;
-	private String t_Teacher_Institution;
+	private Integer t_Teacher_Institution;
 	private String t_Teacher_Phone_Number;
 	private String t_Teacher_Assessment;
 	private Integer t_Teacher_ApprovalStatus;
@@ -33,7 +33,7 @@ public class Teacher {
 	public void setT_Teacher_Real_Name(String t_Teacher_Real_Name) {
 		this.t_Teacher_Real_Name = t_Teacher_Real_Name;
 	}
-	public String getT_Teacher_Institution() {
+	public Integer getT_Teacher_Institution() {
 		return t_Teacher_Institution;
 	}
 	public Integer getT_Teacher_ApprovalStatus() {
@@ -42,7 +42,7 @@ public class Teacher {
 	public void setT_Teacher_ApprovalStatus(Integer t_Teacher_ApprovalStatus) {
 		this.t_Teacher_ApprovalStatus = t_Teacher_ApprovalStatus;
 	}
-	public void setT_Teacher_Institution(String t_Teacher_Institution) {
+	public void setT_Teacher_Institution(Integer t_Teacher_Institution) {
 		this.t_Teacher_Institution = t_Teacher_Institution;
 	}
 	public String getT_Teacher_Phone_Number() {

@@ -7,5 +7,7 @@ public interface StudentDAO {
 	public void save(Student student);
 	public void delete(Integer ID);
 	public Student getFromID(Integer ID);
-	public Student getFromUseName(String UseName);
+	public Student getFromUseName(String usename);
+	public void updateAuthority(Integer authority,Integer ID);
+	public void updateAssessment(String assessment,Integer ID);
 }

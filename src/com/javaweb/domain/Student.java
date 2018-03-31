@@ -7,9 +7,23 @@ public class Student {
 	private String t_Sudent_Real_Name;
 	private String t_Sudent_Phone_Number;
 	private String t_Sudent_Assessment;
+	private String t_Student_Email;
+	private Integer t_Student_Authority;
 	
+	public Integer getT_Student_Authority() {
+		return t_Student_Authority;
+	}
+	public void setT_Student_Authority(Integer t_Student_Authority) {
+		this.t_Student_Authority = t_Student_Authority;
+	}
 	public Integer getT_Sudent_ID() {
 		return t_Sudent_ID;
+	}
+	public String getT_Student_Email() {
+		return t_Student_Email;
+	}
+	public void setT_Student_Email(String t_Student_Email) {
+		this.t_Student_Email = t_Student_Email;
 	}
 	public void setT_Sudent_ID(Integer t_Sudent_ID) {
 		this.t_Sudent_ID = t_Sudent_ID;
@@ -53,10 +67,10 @@ public class Student {
 	}
 	@Override
 	public String toString() {
-		return "Student [t_Sudent_Id=" + t_Sudent_ID + ", t_Sudent_User_Name=" + t_Sudent_User_Name
+		return "Student [t_Sudent_ID=" + t_Sudent_ID + ", t_Sudent_User_Name=" + t_Sudent_User_Name
 				+ ", t_Sudent_User_Password=" + t_Sudent_User_Password + ", t_Sudent_Real_Name=" + t_Sudent_Real_Name
 				+ ", t_Sudent_Phone_Number=" + t_Sudent_Phone_Number + ", t_Sudent_Assessment=" + t_Sudent_Assessment
-				+ "]";
+				+ ", t_Student_Email=" + t_Student_Email + ", t_Student_Authority=" + t_Student_Authority + "]";
 	}
 	
 	
