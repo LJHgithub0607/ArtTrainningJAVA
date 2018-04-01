@@ -39,6 +39,18 @@ public class CourseDAOJdbcImpl extends DAO<Course> implements CourseDAO {
 		String sql="SELECT * FROM t_Course WHERE t_Course_Student_ID=?";
 		return getForList(sql, ID);
 	}
+
+	@Override
+	public Course getFromStudentIDAndTotalCourseID(Integer studentID, Integer totalcourseID) {
+		String sql="SELECT * FROM t_Course WHERE t_Course_Student_ID=? AND t_Course_theCourse_ID=?";
+		return get(sql, studentID,totalcourseID);
+	}
+
+	@Override
+	public List<Course> getForListWithTotalCourseID(Integer ID) {
+		String sql="SELECT * FROM t_Course WHERE t_Course_theCourse_ID=?";
+		return getForList(sql, ID);
+	}
 	
 
 }

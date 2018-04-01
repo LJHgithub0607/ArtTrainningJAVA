@@ -47,4 +47,10 @@ public class TeacherDAOJdbcImpl extends DAO<Teacher> implements TeacherDAO{
 		return getForList(sql,InstitutionID);
 	}
 
+	@Override
+	public List<Teacher> getFromRealName(String realname) {
+		String sql="SELECT * FROM t_Teacher WHERE t_Teacher_RealName=?";
+		return getForList(sql, realname);
+	}
+
 }

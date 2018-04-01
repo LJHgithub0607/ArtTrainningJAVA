@@ -92,6 +92,7 @@ public class Register extends HttpServlet {
 				studentDAO.getFromID(studentID).setT_Student_Authority(1);
 				String Institution_ApprovalWait=institutionDAO.getFromUserName(username).getT_Institution_ApprovalWait();
 				institutionDAO.getFromID(institutionID).setT_Institution_ApprovalWait(Institution_ApprovalWait+teacherDAO.getFromUseName(username).getT_Teacher_ID()+",");
+				//add teacherID into institution's ApprovalWait
 				map.put("result", 1);
 				
 			} catch (Exception e) {
@@ -232,9 +233,14 @@ public class Register extends HttpServlet {
         	institution.setT_Institution_Real_Name(realname);
         	institution.setT_Institution_Phone(phonenumber);
         	institution.setT_Institution_Adress(address);
-        	
-        	map.put("result", 1);
-			map.put("result", 0);
+        	try {
+				institutionDAO.save(institution);
+				map.put("result", 1);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				map.put("result", 0);
+			}
             String jsonString=JSONSerializer.toJSON(map).toString();  
             writer.println(jsonString);  
        
@@ -243,6 +249,11 @@ public class Register extends HttpServlet {
 	}
 	
 	private void InstitutionUpdate(HttpServletRequest request,HttpServletResponse response) throws ServletException,IOException{
+        response.setContentType("text/html;charset=utf-8");  
+        request.setCharacterEncoding("utf-8");  
+        response.setCharacterEncoding("utf-8");  
+        PrintWriter writer = response.getWriter();
+        
 		Integer id=Integer.parseInt(request.getParameter("id"));
         String username=request.getParameter("username");  
         String password=request.getParameter("password");
@@ -251,6 +262,8 @@ public class Register extends HttpServlet {
         String address=request.getParameter("address");
         String assessment=request.getParameter("assessment");
         String approvalwait=request.getParameter("approvalwait");
+        
+        Map<String, Object>  map=new HashMap<String, Object>();
         
     	Institution institution=new Institution();
     	institution.setT_Institution_ID(id);
@@ -261,8 +274,20 @@ public class Register extends HttpServlet {
     	institution.setT_Institution_Adress(address);
     	institution.setT_Institution_Assessment(assessment);
     	institution.setT_Institution_ApprovalWait(approvalwait);
-    	institutionDAO.updatenew(institution);
     	
+    	try {
+			institutionDAO.updatenew(institution);
+			map.put("result", 1);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			map.put("result", 0);
+		}
+        String jsonString=JSONSerializer.toJSON(map).toString();  
+        writer.println(jsonString);  
+   
+    writer.flush();  
+    writer.close();  
 	}
 	private boolean IfNotExist(String username){
 		return studentDAO.getFromUseName(username)==null;

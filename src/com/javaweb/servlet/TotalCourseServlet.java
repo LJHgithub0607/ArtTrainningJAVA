@@ -18,8 +18,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.javaweb.dao.CourseDAO;
 import com.javaweb.dao.Total_CourseDAO;
+import com.javaweb.dao.impl.CourseDAOJdbcImpl;
 import com.javaweb.dao.impl.Total_CourseDAOJdbcImpl;
+import com.javaweb.domain.Course;
 import com.javaweb.domain.Total_Course;
 import com.tools.TimerThreadExecutor;
 
@@ -32,6 +35,7 @@ import net.sf.json.JSONSerializer;
 public class TotalCourseServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private Total_CourseDAO total_CourseDAO=new Total_CourseDAOJdbcImpl();
+    private CourseDAO courseDAO=new CourseDAOJdbcImpl();
     ExecutorService pool=Executors.newCachedThreadPool();
     /**
      * @see HttpServlet#HttpServlet()
@@ -54,7 +58,7 @@ public class TotalCourseServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String methodName=request.getRequestURI();
 		System.out.println(methodName);
-		methodName=methodName.substring(21, methodName.length());//different between each servlet     for example:/javaweb/Course/example
+		methodName=methodName.substring(21, methodName.length());//different between each servlet     for example:/javaweb/totalCourse/example
 		System.out.println(methodName);
 		try {
 			Method method=getClass().getDeclaredMethod(methodName, HttpServletRequest.class,HttpServletResponse.class);
@@ -80,10 +84,40 @@ public class TotalCourseServlet extends HttpServlet {
         String[] totalstudentID=total_Course.getT_Teacher_Students_ID().split(",");
         if(totalstudentID.length<total_Course.getT_Course_Max_Students()){
         	total_Course.setT_Teacher_Students_ID(total_Course.getT_Teacher_Students_ID()+studentID+",");
-        	map.put("result", "Success");
+        	map.put("result", 1);
         }else{
-        	map.put("result", "Out Of Max");
+        	map.put("result", 0);
         }  
+            String jsonString=JSONSerializer.toJSON(map).toString();  
+            writer.println(jsonString);  
+       
+        writer.flush();  
+        writer.close();  		
+	}
+	
+	private void AskForLeave(HttpServletRequest request,HttpServletResponse response) throws ServletException,IOException {
+        response.setContentType("text/html;charset=utf-8");  
+        request.setCharacterEncoding("utf-8");  
+        response.setCharacterEncoding("utf-8");  
+        PrintWriter writer = response.getWriter();
+        
+        Integer studentID=Integer.parseInt(request.getParameter("studentID"));  
+        Integer totalcourseID=Integer.parseInt(request.getParameter("totalcourseID"));
+        String dateofleave=request.getParameter("dateofleave");
+        
+        Map<String, Object>  map=new HashMap<String, Object>();
+
+        Course course =courseDAO.getFromStudentIDAndTotalCourseID(studentID, totalcourseID);
+        try {
+			course.setT_Course_Total_Time(course.getT_Course_Total_Time()-1);
+			course.setT_Course_DateOfLeave(course.getT_Course_DateOfLeave()+dateofleave+",");
+			//TODO Remind the teacher for leave information
+			map.put("result", 1);
+		} catch (Exception e) {
+			map.put("result", 0);
+			e.printStackTrace();
+		}
+        
             String jsonString=JSONSerializer.toJSON(map).toString();  
             writer.println(jsonString);  
        

@@ -79,7 +79,17 @@ public class Login extends HttpServlet {
         
         if (result.equals("1")) {
 			map.put("studentID", studentDAO.getFromUseName(username).getT_Sudent_ID());
-			map.put("authority", studentDAO.getFromUseName(username).getT_Student_Authority());
+			Integer authority=studentDAO.getFromUseName(username).getT_Student_Authority();
+			map.put("authority", authority);
+			switch (authority) {
+			case 1:
+				map.put("teacherID", teacherDAO.getFromUseName(username).getT_Teacher_ID());
+				break;
+			case 2:
+				map.put("institutionID", institutionDAO.getFromUserName(username).getT_Institution_ID());
+			default:
+				break;
+			}
 		}
         map.put("result", result);
         String jsonString=JSONSerializer.toJSON(map).toString();  

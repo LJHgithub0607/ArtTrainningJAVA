@@ -9,5 +9,7 @@ public interface CourseDAO {
 	public void save(Course course);
 	public void delete(Integer ID);
 	public Course getFromID(Integer ID);
+	public Course getFromStudentIDAndTotalCourseID(Integer studentID,Integer totalcourseID);
 	public List<Course> getForListWithStudentID(Integer ID);
+	public List<Course> getForListWithTotalCourseID(Integer ID);
 }

@@ -167,4 +167,108 @@ public class Search extends HttpServlet {
         writer.flush();  
         writer.close();  
 	}
+	
+	private void SearchTeacherInfoWithName(HttpServletRequest request,HttpServletResponse response) throws ServletException,IOException {
+        response.setContentType("text/html;charset=utf-8");  
+        request.setCharacterEncoding("utf-8");  
+        response.setCharacterEncoding("utf-8");  
+        PrintWriter writer = response.getWriter();
+        
+        String realname=request.getParameter("realname");
+       
+        Map<String, Object>  map=new HashMap<String, Object>();
+
+        	try {
+        		map.put("teacherlist", teacherDAO.getFromUseName(realname));
+				map.put("result", 1);
+				
+			} catch (Exception e) {
+				map.put("result", 0);
+				e.printStackTrace();
+			}
+
+            String jsonString=JSONSerializer.toJSON(map).toString();  
+            writer.println(jsonString);  
+       
+        writer.flush();  
+        writer.close();  
+	}
+	
+	private void SearchCourseInfo(HttpServletRequest request,HttpServletResponse response) throws ServletException,IOException {
+        response.setContentType("text/html;charset=utf-8");  
+        request.setCharacterEncoding("utf-8");  
+        response.setCharacterEncoding("utf-8");  
+        PrintWriter writer = response.getWriter();
+        
+        Integer CourseID=Integer.parseInt(request.getParameter("CourseID"));
+       
+        Map<String, Object>  map=new HashMap<String, Object>();
+
+        	try {
+        		map.put("total_courseinfo", total_CourseDAO.getFromID(CourseID));
+				map.put("result", 1);
+				
+			} catch (Exception e) {
+				map.put("result", 0);
+				e.printStackTrace();
+			}
+
+            String jsonString=JSONSerializer.toJSON(map).toString();  
+            writer.println(jsonString);  
+       
+        writer.flush();  
+        writer.close();  
+	}
+	
+	private void SearchCourseInfoWithTeacherID(HttpServletRequest request,HttpServletResponse response) throws ServletException,IOException {
+        response.setContentType("text/html;charset=utf-8");  
+        request.setCharacterEncoding("utf-8");  
+        response.setCharacterEncoding("utf-8");  
+        PrintWriter writer = response.getWriter();
+        
+        Integer teacherID=Integer.parseInt(request.getParameter("teacherID"));
+       
+        Map<String, Object>  map=new HashMap<String, Object>();
+
+        	try {
+        		map.put("total_courseinfoList", total_CourseDAO.getFromTeacherID(teacherID));
+				map.put("result", 1);
+				
+			} catch (Exception e) {
+				map.put("result", 0);
+				e.printStackTrace();
+			}
+
+            String jsonString=JSONSerializer.toJSON(map).toString();  
+            writer.println(jsonString);  
+       
+        writer.flush();  
+        writer.close();  
+	}
+	
+	private void SearchCourseInfoWithInstitutionID(HttpServletRequest request,HttpServletResponse response) throws ServletException,IOException {
+        response.setContentType("text/html;charset=utf-8");  
+        request.setCharacterEncoding("utf-8");  
+        response.setCharacterEncoding("utf-8");  
+        PrintWriter writer = response.getWriter();
+        
+        Integer institutionID=Integer.parseInt(request.getParameter("institutionID"));
+       
+        Map<String, Object>  map=new HashMap<String, Object>();
+
+        	try {
+        		map.put("total_courseinfoList", total_CourseDAO.getFromTeacherID(institutionID));
+				map.put("result", 1);
+				
+			} catch (Exception e) {
+				map.put("result", 0);
+				e.printStackTrace();
+			}
+
+            String jsonString=JSONSerializer.toJSON(map).toString();  
+            writer.println(jsonString);  
+       
+        writer.flush();  
+        writer.close();  
+	}
 }

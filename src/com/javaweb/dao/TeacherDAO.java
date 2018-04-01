@@ -10,5 +10,6 @@ public interface TeacherDAO {
 	public void delete(Integer ID);
 	public Teacher getFromID(Integer ID);
 	public Teacher getFromUseName(String UseName);
+	public List<Teacher> getFromRealName(String realname);
 	public List<Teacher> getFromInstitutionID(Integer InstitutionID);
 }
