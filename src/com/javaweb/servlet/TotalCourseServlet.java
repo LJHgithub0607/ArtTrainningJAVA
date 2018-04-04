@@ -24,6 +24,7 @@ import com.javaweb.dao.impl.CourseDAOJdbcImpl;
 import com.javaweb.dao.impl.Total_CourseDAOJdbcImpl;
 import com.javaweb.domain.Course;
 import com.javaweb.domain.Total_Course;
+import com.tools.RequestTool;
 import com.tools.TimerThreadExecutor;
 
 import net.sf.json.JSONSerializer;
@@ -127,29 +128,31 @@ public class TotalCourseServlet extends HttpServlet {
 	
 	private void set(HttpServletRequest request,HttpServletResponse response) throws ServletException,IOException {
 
-        String name=request.getParameter("name");  
-        Integer teacherID=Integer.parseInt(request.getParameter("teacherID"));
-        Integer courseinstitutionID=Integer.parseInt(request.getParameter("courseinstitutionID"));
-        String courseclassrooms=request.getParameter("courseclassrooms");
-    	java.sql.Date deadlinedate=Date.valueOf(request.getParameter("deadlinedate"));
-    	java.sql.Date startdate=Date.valueOf(request.getParameter("startdate"));
-    	Integer weekday=Integer.parseInt(request.getParameter("weekday"));
-    	Time starttime=Time.valueOf(request.getParameter("starttime"));
-    	Time endtime=Time.valueOf(request.getParameter("endtime"));
-    	Integer coursetimes=Integer.parseInt(request.getParameter("coursetimes"));//this Course total Course Time of all students;
-    	Integer maxstudents=Integer.parseInt(request.getParameter("maxstudents"));
+        String name=request.getParameter("t_Course_Name");  
+        Integer teacherID=Integer.parseInt(request.getParameter("t_Course_Teacher_ID"));
+        Integer courseinstitutionID=Integer.parseInt(request.getParameter("t_Course_Institution_ID"));
+//        String courseclassrooms=request.getParameter("courseclassrooms");
+    	java.sql.Date deadlinedate=Date.valueOf(request.getParameter("t_Course_Deadline_Date"));
+//    	java.sql.Date startdate=Date.valueOf(request.getParameter("startdate"));
+//    	Integer weekday=Integer.parseInt(request.getParameter("weekday"));
+//    	Time starttime=Time.valueOf(request.getParameter("starttime"));
+//    	Time endtime=Time.valueOf(request.getParameter("endtime"));
+//    	Integer coursetimes=Integer.parseInt(request.getParameter("coursetimes"));//this Course total Course Time of all students;
+//    	Integer maxstudents=Integer.parseInt(request.getParameter("maxstudents"));
         
     	Total_Course total_course=new Total_Course();
-    	total_course.setT_Course_Name(name);
-    	total_course.setT_Course_Teacher_ID(teacherID);
-    	total_course.setT_Course_Institution_ID(courseinstitutionID);
-    	total_course.setT_Course_Deadline_Date(deadlinedate);
-    	total_course.setT_Course_Start_Date(startdate);
-    	total_course.setT_Course_Week_Day(weekday);
-    	total_course.setT_Course_Day_Start_Time(starttime);
-    	total_course.setT_Course_Day_End_Time(endtime);
-    	total_course.setT_Course_Times(coursetimes);
-    	total_course.setT_Course_Max_Students(maxstudents);
+    	RequestTool.getParameter(total_course, request);
+//    	total_course.setT_Course_Name(name);
+//    	total_course.setT_Course_Teacher_ID(teacherID);
+//    	total_course.setT_Course_Institution_ID(courseinstitutionID);
+//    	total_course.setT_Course_Classrooms(courseclassrooms);
+//    	total_course.setT_Course_Deadline_Date(deadlinedate);
+//    	total_course.setT_Course_Start_Date(startdate);
+//    	total_course.setT_Course_Week_Day(weekday);
+//    	total_course.setT_Course_Day_Start_Time(starttime);
+//    	total_course.setT_Course_Day_End_Time(endtime);
+//    	total_course.setT_Course_Times(coursetimes);
+//    	total_course.setT_Course_Max_Students(maxstudents);
 		
     	total_CourseDAO.save(total_course);
     	Integer courseID =total_CourseDAO.getID(name, teacherID, courseinstitutionID);

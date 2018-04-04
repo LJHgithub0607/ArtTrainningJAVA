@@ -24,6 +24,7 @@ import com.javaweb.dao.impl.StudentDAOJdbcImpl;
 import com.javaweb.dao.impl.TeacherDAOJdbcImpl;
 import com.javaweb.domain.Student;
 import com.javaweb.domain.Teacher;
+import com.tools.RequestTool;
 import com.javaweb.domain.Institution;
 import net.sf.json.JSONSerializer;
 
@@ -108,25 +109,26 @@ public class Register extends HttpServlet {
 	}
 	
 	private void TeacherUpdate(HttpServletRequest request,HttpServletResponse response) throws ServletException,IOException{
-		Integer id=Integer.parseInt(request.getParameter("id"));
-        String username=request.getParameter("username");  
-        String password=request.getParameter("password");
-        String realname=request.getParameter("realname");
-        Integer institutionID=Integer.parseInt(request.getParameter("institutionID"));
-        String phonenumber=request.getParameter("phonenumber");
-        String assessment=request.getParameter("assessment");
-        Integer approvalstatus=Integer.parseInt(request.getParameter("approvalstatus"));
+//		Integer id=Integer.parseInt(request.getParameter("id"));
+//        String username=request.getParameter("username");  
+//        String password=request.getParameter("password");
+//        String realname=request.getParameter("realname");
+//        Integer institutionID=Integer.parseInt(request.getParameter("institutionID"));
+//        String phonenumber=request.getParameter("phonenumber");
+//        String assessment=request.getParameter("assessment");
+//        Integer approvalstatus=Integer.parseInt(request.getParameter("approvalstatus"));
         
         Map<String, Object>  map=new HashMap<String, Object>();
     	Teacher teacher=new Teacher();
-    	teacher.setT_Teacher_ID(id);
-    	teacher.setT_Teacher_User_Name(username);
-    	teacher.setT_Teacher_User_PAssword(password);
-    	teacher.setT_Teacher_Real_Name(realname);
-    	teacher.setT_Teacher_Institution(institutionID);
-    	teacher.setT_Teacher_Phone_Number(phonenumber);
-    	teacher.setT_Teacher_Assessment(assessment);
-    	teacher.setT_Teacher_ApprovalStatus(approvalstatus);
+    	RequestTool.getParameter(teacher, request);
+//    	teacher.setT_Teacher_ID(id);
+//    	teacher.setT_Teacher_User_Name(username);
+//    	teacher.setT_Teacher_User_PAssword(password);
+//    	teacher.setT_Teacher_Real_Name(realname);
+//    	teacher.setT_Teacher_Institution(institutionID);
+//    	teacher.setT_Teacher_Phone_Number(phonenumber);
+//    	teacher.setT_Teacher_Assessment(assessment);
+//    	teacher.setT_Teacher_ApprovalStatus(approvalstatus);
     	try {
 			teacherDAO.updatenew(teacher);
 			map.put("result", 1);
@@ -144,19 +146,20 @@ public class Register extends HttpServlet {
         PrintWriter writer = response.getWriter();
         
         String username=request.getParameter("username");  
-        String password=request.getParameter("password");
-        String realname=request.getParameter("realname");
-        String phonenumber=request.getParameter("phonenumber");
-        String email=request.getParameter("email");
+//        String password=request.getParameter("password");
+//        String realname=request.getParameter("realname");
+//        String phonenumber=request.getParameter("phonenumber");
+//        String email=request.getParameter("email");
         
         Map<String, Object>  map=new HashMap<String, Object>();
         if (IfNotExist(username)) {
         	Student student=new Student();
-        	student.setT_Sudent_User_Name(username);
-        	student.setT_Sudent_User_Password(password);
-        	student.setT_Sudent_Real_Name(realname);
-        	student.setT_Sudent_Phone_Number(phonenumber);
-        	student.setT_Student_Email(email);
+        	RequestTool.getParameter(student, request);
+//        	student.setT_Sudent_User_Name(username);
+//        	student.setT_Sudent_User_Password(password);
+//        	student.setT_Sudent_Real_Name(realname);
+//        	student.setT_Sudent_Phone_Number(phonenumber);
+//        	student.setT_Student_Email(email);
         	try {
 				studentDAO.save(student);
 				map.put("result", 1);
@@ -180,23 +183,24 @@ public class Register extends HttpServlet {
         response.setCharacterEncoding("utf-8");  
         PrintWriter writer = response.getWriter();
         
-		Integer id=Integer.parseInt(request.getParameter("id"));
-        String username=request.getParameter("username");  
-        String password=request.getParameter("password");
-        String realname=request.getParameter("realname");
-        String phonenumber=request.getParameter("phonenumber");
-        String assessment=request.getParameter("assessment");
-        String email=request.getParameter("email");
+//		Integer id=Integer.parseInt(request.getParameter("id"));
+//        String username=request.getParameter("username");  
+//        String password=request.getParameter("password");
+//        String realname=request.getParameter("realname");
+//        String phonenumber=request.getParameter("phonenumber");
+//        String assessment=request.getParameter("assessment");
+//        String email=request.getParameter("email");
         
         Map<String, Object>  map=new HashMap<String, Object>();
     	Student student=new Student();
-    	student.setT_Sudent_ID(id);
-    	student.setT_Sudent_User_Name(username);
-    	student.setT_Sudent_User_Password(password);
-    	student.setT_Sudent_Real_Name(realname);
-    	student.setT_Sudent_Phone_Number(phonenumber);
-    	student.setT_Sudent_Assessment(assessment);
-    	student.setT_Student_Email(email);
+    	RequestTool.getParameter(student, request);
+//    	student.setT_Sudent_ID(id);
+//    	student.setT_Sudent_User_Name(username);
+//    	student.setT_Sudent_User_Password(password);
+//    	student.setT_Sudent_Real_Name(realname);
+//    	student.setT_Sudent_Phone_Number(phonenumber);
+//    	student.setT_Sudent_Assessment(assessment);
+//    	student.setT_Student_Email(email);
     	
     	try {
 			studentDAO.updatenew(student);
@@ -219,20 +223,20 @@ public class Register extends HttpServlet {
         response.setCharacterEncoding("utf-8");  
         PrintWriter writer = response.getWriter();
         
-        String username=request.getParameter("username");  
-        String password=request.getParameter("password");
-        String realname=request.getParameter("realname");
-        String phonenumber=request.getParameter("phonenumber");
-        String address=request.getParameter("address");
+//        String username=request.getParameter("username");  
+//        String password=request.getParameter("password");
+//        String realname=request.getParameter("realname");
+//        String phonenumber=request.getParameter("phonenumber");
+//        String address=request.getParameter("address");
         
         Map<String, Object>  map=new HashMap<String, Object>();
-
         	Institution institution=new Institution();
-        	institution.setT_Institution_User_Name(username);
-        	institution.setT_Institution_User_Password(password);
-        	institution.setT_Institution_Real_Name(realname);
-        	institution.setT_Institution_Phone(phonenumber);
-        	institution.setT_Institution_Adress(address);
+        	RequestTool.getParameter(institution, request);
+//        	institution.setT_Institution_User_Name(username);
+//        	institution.setT_Institution_User_Password(password);
+//        	institution.setT_Institution_Real_Name(realname);
+//        	institution.setT_Institution_Phone(phonenumber);
+//        	institution.setT_Institution_Adress(address);
         	try {
 				institutionDAO.save(institution);
 				map.put("result", 1);
@@ -254,26 +258,27 @@ public class Register extends HttpServlet {
         response.setCharacterEncoding("utf-8");  
         PrintWriter writer = response.getWriter();
         
-		Integer id=Integer.parseInt(request.getParameter("id"));
-        String username=request.getParameter("username");  
-        String password=request.getParameter("password");
-        String realname=request.getParameter("realname");
-        String phonenumber=request.getParameter("phonenumber");
-        String address=request.getParameter("address");
-        String assessment=request.getParameter("assessment");
-        String approvalwait=request.getParameter("approvalwait");
+//		Integer id=Integer.parseInt(request.getParameter("id"));
+//        String username=request.getParameter("username");  
+//        String password=request.getParameter("password");
+//        String realname=request.getParameter("realname");
+//        String phonenumber=request.getParameter("phonenumber");
+//        String address=request.getParameter("address");
+//        String assessment=request.getParameter("assessment");
+//        String approvalwait=request.getParameter("approvalwait");
         
         Map<String, Object>  map=new HashMap<String, Object>();
         
     	Institution institution=new Institution();
-    	institution.setT_Institution_ID(id);
-    	institution.setT_Institution_User_Name(username);
-    	institution.setT_Institution_User_Password(password);
-    	institution.setT_Institution_Real_Name(realname);
-    	institution.setT_Institution_Phone(phonenumber);
-    	institution.setT_Institution_Adress(address);
-    	institution.setT_Institution_Assessment(assessment);
-    	institution.setT_Institution_ApprovalWait(approvalwait);
+    	RequestTool.getParameter(institution, request);
+//    	institution.setT_Institution_ID(id);
+//    	institution.setT_Institution_User_Name(username);
+//    	institution.setT_Institution_User_Password(password);
+//    	institution.setT_Institution_Real_Name(realname);
+//    	institution.setT_Institution_Phone(phonenumber);
+//    	institution.setT_Institution_Adress(address);
+//    	institution.setT_Institution_Assessment(assessment);
+//    	institution.setT_Institution_ApprovalWait(approvalwait);
     	
     	try {
 			institutionDAO.updatenew(institution);
