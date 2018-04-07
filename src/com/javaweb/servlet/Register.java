@@ -73,13 +73,13 @@ public class Register extends HttpServlet {
         request.setCharacterEncoding("utf-8");  
         response.setCharacterEncoding("utf-8");  
         PrintWriter writer = response.getWriter();
-        Integer studentID=Integer.parseInt(request.getParameter("studentID"));
-        Integer institutionID=Integer.parseInt(request.getParameter("institutionID"));
+        Integer studentID=Integer.parseInt(request.getParameter("t_Student_ID"));
+        Integer institutionID=Integer.parseInt(request.getParameter("t_Institution_ID"));
         
-        String username=studentDAO.getFromID(studentID).getT_Sudent_User_Name(); 
-        String password=studentDAO.getFromID(studentID).getT_Sudent_User_Password();
-        String realname=studentDAO.getFromID(studentID).getT_Sudent_Real_Name();
-        String phonenumber=studentDAO.getFromID(studentID).getT_Sudent_Phone_Number();
+        String username=studentDAO.getFromID(studentID).getT_Student_User_Name(); 
+        String password=studentDAO.getFromID(studentID).getT_Student_User_Password();
+        String realname=studentDAO.getFromID(studentID).getT_Student_Real_Name();
+        String phonenumber=studentDAO.getFromID(studentID).getT_Student_Phone_Number();
         
         Map<String, Object>  map=new HashMap<String, Object>();
         	Teacher teacher=new Teacher();
@@ -145,7 +145,7 @@ public class Register extends HttpServlet {
         response.setCharacterEncoding("utf-8");  
         PrintWriter writer = response.getWriter();
         
-        String username=request.getParameter("username");  
+        String username=request.getParameter("t_Student_User_Name");  
 //        String password=request.getParameter("password");
 //        String realname=request.getParameter("realname");
 //        String phonenumber=request.getParameter("phonenumber");

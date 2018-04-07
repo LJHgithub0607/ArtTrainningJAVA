@@ -20,7 +20,6 @@ import com.javaweb.dao.impl.CustomerDAOJdbcImpl;
 import com.javaweb.domain.Customer;
 import com.tools.RequestTool;
 
-
 @WebServlet("*.do")
 public class CustomerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

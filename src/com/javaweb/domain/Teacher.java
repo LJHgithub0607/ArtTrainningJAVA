@@ -4,7 +4,7 @@ public class Teacher {
 	private Integer t_Teacher_ID;
 	private String t_Teacher_User_Name;
 	private String t_Teacher_User_PAssword;
-	private String t_Teacher_Real_Name;
+	private String t_Teacher_RealName;
 	private Integer t_Teacher_Institution;
 	private String t_Teacher_Phone_Number;
 	private String t_Teacher_Assessment;
@@ -28,10 +28,10 @@ public class Teacher {
 		this.t_Teacher_User_PAssword = t_Teacher_User_PAssword;
 	}
 	public String getT_Teacher_Real_Name() {
-		return t_Teacher_Real_Name;
+		return t_Teacher_RealName;
 	}
 	public void setT_Teacher_Real_Name(String t_Teacher_Real_Name) {
-		this.t_Teacher_Real_Name = t_Teacher_Real_Name;
+		this.t_Teacher_RealName = t_Teacher_Real_Name;
 	}
 	public Integer getT_Teacher_Institution() {
 		return t_Teacher_Institution;
@@ -61,7 +61,7 @@ public class Teacher {
 	public String toString() {
 		return "Teacher [t_Teacher_ID=" + t_Teacher_ID + ", t_Teacher_User_Name=" + t_Teacher_User_Name
 				+ ", t_Teacher_User_PAssword=" + t_Teacher_User_PAssword + ", t_Teacher_Real_Name="
-				+ t_Teacher_Real_Name + ", t_Teacher_Institution=" + t_Teacher_Institution + ", t_Teacher_Phone_Number="
+				+ t_Teacher_RealName + ", t_Teacher_Institution=" + t_Teacher_Institution + ", t_Teacher_Phone_Number="
 				+ t_Teacher_Phone_Number + ", t_Teacher_Assessment=" + t_Teacher_Assessment
 				+ ", t_Teacher_ApprovalStatus=" + t_Teacher_ApprovalStatus + "]";
 	}

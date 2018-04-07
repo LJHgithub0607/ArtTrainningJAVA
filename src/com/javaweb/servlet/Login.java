@@ -66,19 +66,19 @@ public class Login extends HttpServlet {
         response.setCharacterEncoding("utf-8");  
         PrintWriter writer = response.getWriter();
         
-        String username=request.getParameter("username");  
-        String password=request.getParameter("password");
+        String username=request.getParameter("t_Student_User_Name");  
+        String password=request.getParameter("t_Student_User_Password");
 
         Map<String, Object>  map=new HashMap<String, Object>();
         String result="";
         if (studentDAO.getFromUseName(username)!=null) {
-        	result=password.equals(studentDAO.getFromUseName(username).getT_Sudent_User_Password())?"1":"0";
+        	result=password.equals(studentDAO.getFromUseName(username).getT_Student_User_Password())?"1":"0";
         }else{
         	result="2";
         }
         
         if (result.equals("1")) {
-			map.put("studentID", studentDAO.getFromUseName(username).getT_Sudent_ID());
+			map.put("studentID", studentDAO.getFromUseName(username).getT_Student_ID());
 			Integer authority=studentDAO.getFromUseName(username).getT_Student_Authority();
 			map.put("authority", authority);
 			switch (authority) {

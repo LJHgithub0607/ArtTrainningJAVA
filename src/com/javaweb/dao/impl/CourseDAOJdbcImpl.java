@@ -17,7 +17,7 @@ public class CourseDAOJdbcImpl extends DAO<Course> implements CourseDAO {
 
 	@Override
 	public void save(Course course) {
-		String sql="INSERT INTO t_Course(t_Course_theCourse_ID,t_Couser_Student_ID,t_Course_Total_Time,t_Course_DateOfLeave),VALUES(?,?,?,?)";
+		String sql="INSERT INTO t_Course(t_Course_theCourse_ID,t_Couser_Student_ID,t_Course_Total_Time,t_Course_DateOfLeave) VALUES(?,?,?,?)";
 		update(sql, course.getT_Course_theCourse_ID(),course.getT_Couser_Student_ID(),course.getT_Course_Total_Time(),course.getT_Course_DateOfLeave());
 	}
 

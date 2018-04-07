@@ -109,7 +109,7 @@ public class Search extends HttpServlet {
         response.setCharacterEncoding("utf-8");  
         PrintWriter writer = response.getWriter();
         
-        Integer institutionID=Integer.parseInt(request.getParameter("institutionID"));
+        Integer institutionID=Integer.parseInt(request.getParameter("t_Institution_ID"));
        
         Map<String, Object>  map=new HashMap<String, Object>();
 
@@ -174,7 +174,7 @@ public class Search extends HttpServlet {
         response.setCharacterEncoding("utf-8");  
         PrintWriter writer = response.getWriter();
         
-        String realname=request.getParameter("realname");
+        String realname=request.getParameter("t_Teacher_RealName");
        
         Map<String, Object>  map=new HashMap<String, Object>();
 
@@ -200,7 +200,7 @@ public class Search extends HttpServlet {
         response.setCharacterEncoding("utf-8");  
         PrintWriter writer = response.getWriter();
         
-        Integer CourseID=Integer.parseInt(request.getParameter("CourseID"));
+        Integer CourseID=Integer.parseInt(request.getParameter("t_Course_ID"));
        
         Map<String, Object>  map=new HashMap<String, Object>();
 
@@ -226,7 +226,7 @@ public class Search extends HttpServlet {
         response.setCharacterEncoding("utf-8");  
         PrintWriter writer = response.getWriter();
         
-        Integer teacherID=Integer.parseInt(request.getParameter("teacherID"));
+        Integer teacherID=Integer.parseInt(request.getParameter("t_Teacher_ID"));
        
         Map<String, Object>  map=new HashMap<String, Object>();
 
@@ -252,7 +252,7 @@ public class Search extends HttpServlet {
         response.setCharacterEncoding("utf-8");  
         PrintWriter writer = response.getWriter();
         
-        Integer institutionID=Integer.parseInt(request.getParameter("institutionID"));
+        Integer institutionID=Integer.parseInt(request.getParameter("t_Institution_ID"));
        
         Map<String, Object>  map=new HashMap<String, Object>();
 
