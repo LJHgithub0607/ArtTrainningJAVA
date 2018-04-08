@@ -91,7 +91,7 @@ public class Register extends HttpServlet {
         	try {
 				teacherDAO.save(teacher);
 				studentDAO.getFromID(studentID).setT_Student_Authority(1);
-				String Institution_ApprovalWait=institutionDAO.getFromUserName(username).getT_Institution_ApprovalWait();
+				String Institution_ApprovalWait=institutionDAO.getFromID(institutionID).getT_Institution_ApprovalWait();
 				institutionDAO.getFromID(institutionID).setT_Institution_ApprovalWait(Institution_ApprovalWait+teacherDAO.getFromUseName(username).getT_Teacher_ID()+",");
 				//add teacherID into institution's ApprovalWait
 				map.put("result", 1);
@@ -222,22 +222,16 @@ public class Register extends HttpServlet {
         request.setCharacterEncoding("utf-8");  
         response.setCharacterEncoding("utf-8");  
         PrintWriter writer = response.getWriter();
-        
-//        String username=request.getParameter("username");  
-//        String password=request.getParameter("password");
-//        String realname=request.getParameter("realname");
-//        String phonenumber=request.getParameter("phonenumber");
-//        String address=request.getParameter("address");
-        
+        Integer studentID=Integer.parseInt(request.getParameter("t_Student_ID"));
+        Student student=studentDAO.getFromID(studentID);
         Map<String, Object>  map=new HashMap<String, Object>();
         	Institution institution=new Institution();
-        	RequestTool.getParameter(institution, request);
-//        	institution.setT_Institution_User_Name(username);
-//        	institution.setT_Institution_User_Password(password);
-//        	institution.setT_Institution_Real_Name(realname);
-//        	institution.setT_Institution_Phone(phonenumber);
-//        	institution.setT_Institution_Adress(address);
+        	institution.setT_Institution_User_Name(student.getT_Student_User_Name());
+        	institution.setT_Institution_User_Password(student.getT_Student_User_Password());
+        	institution.setT_Institution_Phone(student.getT_Student_Phone_Number());
+        	institution.setT_Institution_Real_Name(student.getT_Student_Real_Name());
         	try {
+        		student.setT_Student_Authority(2);
 				institutionDAO.save(institution);
 				map.put("result", 1);
 			} catch (Exception e) {
