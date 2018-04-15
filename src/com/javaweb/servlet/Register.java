@@ -145,7 +145,8 @@ public class Register extends HttpServlet {
         response.setCharacterEncoding("utf-8");  
         PrintWriter writer = response.getWriter();
         
-        String username=request.getParameter("t_Student_User_Name");  
+        String username=request.getParameter("t_Student_User_Name");
+ //
 //        String password=request.getParameter("password");
 //        String realname=request.getParameter("realname");
 //        String phonenumber=request.getParameter("phonenumber");
