@@ -3,6 +3,7 @@ package com.javaweb.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.lang.reflect.Method;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -75,11 +76,11 @@ public class Register extends HttpServlet {
         PrintWriter writer = response.getWriter();
         Integer studentID=Integer.parseInt(request.getParameter("t_Student_ID"));
         Integer institutionID=Integer.parseInt(request.getParameter("t_Institution_ID"));
-        
-        String username=studentDAO.getFromID(studentID).getT_Student_User_Name(); 
-        String password=studentDAO.getFromID(studentID).getT_Student_User_Password();
-        String realname=studentDAO.getFromID(studentID).getT_Student_Real_Name();
-        String phonenumber=studentDAO.getFromID(studentID).getT_Student_Phone_Number();
+        Student student=studentDAO.getFromID(studentID);
+        String username=student.getT_Student_User_Name(); 
+        String password=student.getT_Student_User_Password();
+        String realname=student.getT_Student_RealName();
+        String phonenumber=student.getT_Student_Phone_Number();
         
         Map<String, Object>  map=new HashMap<String, Object>();
         	Teacher teacher=new Teacher();
@@ -90,7 +91,8 @@ public class Register extends HttpServlet {
         	teacher.setT_Teacher_Phone_Number(phonenumber);
         	try {
 				teacherDAO.save(teacher);
-				studentDAO.getFromID(studentID).setT_Student_Authority(1);
+				student.setT_Student_Authority(1);
+				studentDAO.updatenew(student);
 				String Institution_ApprovalWait=institutionDAO.getFromID(institutionID).getT_Institution_ApprovalWait();
 				institutionDAO.getFromID(institutionID).setT_Institution_ApprovalWait(Institution_ApprovalWait+teacherDAO.getFromUseName(username).getT_Teacher_ID()+",");
 				//add teacherID into institution's ApprovalWait
@@ -108,7 +110,7 @@ public class Register extends HttpServlet {
         writer.close();  
 	}
 	
-	private void TeacherUpdate(HttpServletRequest request,HttpServletResponse response) throws ServletException,IOException{
+	private void TeacherUpdate(HttpServletRequest request,HttpServletResponse response) throws ServletException,IOException, ParseException{
 //		Integer id=Integer.parseInt(request.getParameter("id"));
 //        String username=request.getParameter("username");  
 //        String password=request.getParameter("password");
@@ -139,7 +141,7 @@ public class Register extends HttpServlet {
     	
 	}
 	
-	private void Student(HttpServletRequest request,HttpServletResponse response) throws ServletException,IOException {
+	private void Student(HttpServletRequest request,HttpServletResponse response) throws ServletException,IOException, ParseException {
         response.setContentType("text/html;charset=utf-8");  
         request.setCharacterEncoding("utf-8");  
         response.setCharacterEncoding("utf-8");  
@@ -178,7 +180,7 @@ public class Register extends HttpServlet {
         writer.close();  
 	}
 	
-	private void StudentUpdate(HttpServletRequest request,HttpServletResponse response) throws ServletException,IOException{
+	private void StudentUpdate(HttpServletRequest request,HttpServletResponse response) throws ServletException,IOException, ParseException{
         response.setContentType("text/html;charset=utf-8");  
         request.setCharacterEncoding("utf-8");  
         response.setCharacterEncoding("utf-8");  
@@ -224,15 +226,18 @@ public class Register extends HttpServlet {
         response.setCharacterEncoding("utf-8");  
         PrintWriter writer = response.getWriter();
         Integer studentID=Integer.parseInt(request.getParameter("t_Student_ID"));
+        String address=request.getParameter("t_Institution_Adress");
         Student student=studentDAO.getFromID(studentID);
         Map<String, Object>  map=new HashMap<String, Object>();
         	Institution institution=new Institution();
         	institution.setT_Institution_User_Name(student.getT_Student_User_Name());
         	institution.setT_Institution_User_Password(student.getT_Student_User_Password());
         	institution.setT_Institution_Phone(student.getT_Student_Phone_Number());
-        	institution.setT_Institution_Real_Name(student.getT_Student_Real_Name());
+        	institution.setT_Institution_Real_Name(student.getT_Student_RealName());
+        	institution.setT_Institution_Adress(address);
         	try {
         		student.setT_Student_Authority(2);
+        		studentDAO.save(student);
 				institutionDAO.save(institution);
 				map.put("result", 1);
 			} catch (Exception e) {
@@ -247,7 +252,7 @@ public class Register extends HttpServlet {
         writer.close();  
 	}
 	
-	private void InstitutionUpdate(HttpServletRequest request,HttpServletResponse response) throws ServletException,IOException{
+	private void InstitutionUpdate(HttpServletRequest request,HttpServletResponse response) throws ServletException,IOException, ParseException{
         response.setContentType("text/html;charset=utf-8");  
         request.setCharacterEncoding("utf-8");  
         response.setCharacterEncoding("utf-8");  

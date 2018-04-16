@@ -3,6 +3,7 @@ package com.javaweb.servlet;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,7 +53,7 @@ public class CustomerServlet extends HttpServlet {
 		response.sendRedirect("query.do");
 	}
 
-	private void update(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
+	private void update(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException, ParseException {
 		Customer customer=new Customer();
 		System.out.println("start");
 		RequestTool.getParameter(customer, request);

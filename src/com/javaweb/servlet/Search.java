@@ -26,6 +26,7 @@ import com.javaweb.dao.impl.StudentDAOJdbcImpl;
 import com.javaweb.dao.impl.TeacherDAOJdbcImpl;
 import com.javaweb.dao.impl.Total_CourseDAOJdbcImpl;
 import com.javaweb.domain.Course;
+import com.javaweb.domain.Json_Total_Course;
 import com.javaweb.domain.Teacher;
 import com.javaweb.domain.Total_Course;
 
@@ -81,7 +82,7 @@ public class Search extends HttpServlet {
         response.setCharacterEncoding("utf-8");  
         PrintWriter writer = response.getWriter();
         
-        Integer studentID=Integer.parseInt(request.getParameter("studentID"));
+        Integer studentID=Integer.parseInt(request.getParameter("t_Student_ID"));
        
         Map<String, Object>  map=new HashMap<String, Object>();
 
@@ -179,7 +180,7 @@ public class Search extends HttpServlet {
         Map<String, Object>  map=new HashMap<String, Object>();
 
         	try {
-        		map.put("teacherlist", teacherDAO.getFromUseName(realname));
+        		map.put("teacherlist", teacherDAO.getFromRealName(realname));
 				map.put("result", 1);
 				
 			} catch (Exception e) {
@@ -203,9 +204,10 @@ public class Search extends HttpServlet {
         Integer CourseID=Integer.parseInt(request.getParameter("t_Course_ID"));
        
         Map<String, Object>  map=new HashMap<String, Object>();
-
+        Total_Course total_Course=total_CourseDAO.getFromID(CourseID);
+        Json_Total_Course json_Total_Course=new Json_Total_Course(total_Course);
         	try {
-        		map.put("total_courseinfo", total_CourseDAO.getFromID(CourseID));
+        		map.put("total_courseinfo", json_Total_Course);
 				map.put("result", 1);
 				
 			} catch (Exception e) {

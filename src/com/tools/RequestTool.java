@@ -1,6 +1,9 @@
 package com.tools;
 
 import java.sql.Date;
+import java.sql.Time;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -12,7 +15,7 @@ import com.mysql.jdbc.Field;
 public class RequestTool {
 	//Save the variables in the request into the instance by reflection
 	//The variable name  in the request is consistent with the class
-	public static <T> void getParameter(T obj,HttpServletRequest request) {
+	public static <T> void getParameter(T obj,HttpServletRequest request) throws ParseException {
 		try {
 			Class<?> objclass=obj.getClass();
 			java.lang.reflect.Field[] fields=objclass.getDeclaredFields();
@@ -21,6 +24,7 @@ public class RequestTool {
 				Class<?> fieldType =field.getType();
 				String fieldName=field.getName();
 				System.out.println(fieldName);
+				System.out.println(fieldType);
 				String paramVal=request.getParameter(fieldName);
 				if (paramVal==null) {
 					continue;
@@ -33,8 +37,12 @@ public class RequestTool {
 			        field.set(obj, Integer.parseInt(paramVal));
 			    //判断类型,如果是date,则使用DateUtil.parseDateNewFormat格式化日期格式
 			    } else if (Date.class == fieldType) {
-			        field.set(obj, DateUtil.parseDate(paramVal));
-			    }
+			    	SimpleDateFormat bartDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+			    	Date date=new Date(bartDateFormat.parse(paramVal).getTime());
+			        field.set(obj, date);
+			    } else if (Time.class == fieldType) {
+					field.set(obj, Time.valueOf(paramVal));
+				}
 			}
 		} catch (NumberFormatException e) {
 			// TODO Auto-generated catch block
@@ -46,9 +54,6 @@ public class RequestTool {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (DateParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

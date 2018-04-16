@@ -4,7 +4,7 @@ public class Student {
 	private Integer t_Student_ID;
 	private String t_Student_User_Name;
 	private String t_Student_User_Password;
-	private String t_Student_Realname;
+	private String t_Student_RealName;
 	private String t_Student_Phone_Number;
 	private String t_Student_Assessment;
 	private String t_Student_Email;
@@ -27,11 +27,11 @@ public class Student {
 	public void setT_Student_User_Password(String t_Student_User_Password) {
 		this.t_Student_User_Password = t_Student_User_Password;
 	}
-	public String getT_Student_Real_Name() {
-		return t_Student_Realname;
+	public String getT_Student_RealName() {
+		return t_Student_RealName;
 	}
-	public void setT_Student_Real_Name(String t_Student_Real_Name) {
-		this.t_Student_Realname = t_Student_Real_Name;
+	public void setT_Student_RealName(String t_Student_RealName) {
+		this.t_Student_RealName = t_Student_RealName;
 	}
 	public String getT_Student_Phone_Number() {
 		return t_Student_Phone_Number;

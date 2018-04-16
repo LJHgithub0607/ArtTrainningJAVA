@@ -11,8 +11,8 @@ public class Total_Course {
 	                                      // example:t_Teacher_Students_ID="1,2,3,4,5" which means there are students"1","2","3","4","5" participating in the course
 	private Integer t_Course_Institution_ID;
 	private String 	t_Course_Classrooms;
-	private java.sql.Date t_Course_Deadline_Date;
-	private java.sql.Date t_Course_Start_Date;
+	private Date t_Course_Deadline_Date;
+	private Date t_Course_Start_Date;
 	private Integer t_Course_Week_Day;
 	private Time t_Course_Day_Start_Time;
 	private Time t_Course_Day_End_Time;
@@ -76,18 +76,6 @@ public class Total_Course {
 	public void setT_Course_Classrooms(String t_Course_Classrooms) {
 		this.t_Course_Classrooms = t_Course_Classrooms;
 	}
-	public java.sql.Date getT_Course_Deadline_Date() {
-		return t_Course_Deadline_Date;
-	}
-	public void setT_Course_Deadline_Date(java.sql.Date t_Course_Deadline_Date) {
-		this.t_Course_Deadline_Date = t_Course_Deadline_Date;
-	}
-	public java.sql.Date getT_Course_Start_Date() {
-		return t_Course_Start_Date;
-	}
-	public void setT_Course_Start_Date(java.sql.Date t_Course_Start_Date) {
-		this.t_Course_Start_Date = t_Course_Start_Date;
-	}
 	public Integer getT_Course_Week_Day() {
 		return t_Course_Week_Day;
 	}
@@ -96,6 +84,18 @@ public class Total_Course {
 	}
 	public Time getT_Course_Day_Start_Time() {
 		return t_Course_Day_Start_Time;
+	}
+	public Date getT_Course_Deadline_Date() {
+		return t_Course_Deadline_Date;
+	}
+	public void setT_Course_Deadline_Date(Date t_Course_Deadline_Date) {
+		this.t_Course_Deadline_Date = t_Course_Deadline_Date;
+	}
+	public Date getT_Course_Start_Date() {
+		return t_Course_Start_Date;
+	}
+	public void setT_Course_Start_Date(Date t_Course_Start_Date) {
+		this.t_Course_Start_Date = t_Course_Start_Date;
 	}
 	public void setT_Course_Day_Start_Time(Time t_Course_Day_Start_Time) {
 		this.t_Course_Day_Start_Time = t_Course_Day_Start_Time;
@@ -130,5 +130,11 @@ public class Total_Course {
 				+ t_Course_Price + ", t_Course_Category=" + t_Course_Category + ", t_Course_Assessment="
 				+ t_Course_Assessment + "]";
 	}
+	
+	public static java.util.Date converSqlToUtil(java.sql.Date udate) {  
+
+		   return new java.util.Date(udate.getTime());  
+
+		} 
    
 }
