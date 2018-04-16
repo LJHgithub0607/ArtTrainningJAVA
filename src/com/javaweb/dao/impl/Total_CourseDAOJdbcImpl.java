@@ -65,7 +65,7 @@ public class Total_CourseDAOJdbcImpl extends DAO<Total_Course> implements Total_
 	@Override
 	public List<Total_Course> getForListWithCriteriaTotal_Course(CriteriaTotal_Course criteriaTotal_Course) {
 		String sql="SELECT * FROM t_Total_Course WHERE t_Course_Name LIKE ? AND t_Course_Assessment LIKE ? AND t_Course_Price <= ? AND t_Course_Category LIKE ?"
-				+ "t_Course_Times=?";
+				+ "AND t_Course_Times=?";
 		return getForList(sql, criteriaTotal_Course.getT_Course_Name(),criteriaTotal_Course.getT_Course_Assessment(),criteriaTotal_Course.getT_Course_Price(),criteriaTotal_Course.getT_Course_Category(),criteriaTotal_Course.getT_Course_Times());
 	}
 

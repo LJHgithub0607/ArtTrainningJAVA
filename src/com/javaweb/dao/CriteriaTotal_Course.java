@@ -8,10 +8,10 @@ public class CriteriaTotal_Course {
 	private Integer t_Course_Times;
 	
 	public String getT_Course_Name() {
-		if (t_Course_Name==null) {
+		if (t_Course_Name=="") {
 			t_Course_Name="%%";
 		}else{
-			t_Course_Name="%"+t_Course_Name+"%";
+//			t_Course_Name="%"+t_Course_Name+"%";
 		}
 		return t_Course_Name;
 	}
@@ -20,7 +20,7 @@ public class CriteriaTotal_Course {
 	}
 	
 	public String getT_Course_Assessment() {
-		if (t_Course_Assessment==null) {
+		if (t_Course_Assessment=="") {
 			t_Course_Assessment="%%";
 		}
 		return t_Course_Assessment;
@@ -37,7 +37,7 @@ public class CriteriaTotal_Course {
 	}
 	
 	public String getT_Course_Category() {
-		if (t_Course_Category==null) {
+		if (t_Course_Category=="") {
 			t_Course_Category="%%";
 		}
 		return t_Course_Category;

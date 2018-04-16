@@ -6,6 +6,7 @@ import java.io.PrintWriter;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -148,14 +149,17 @@ public class Search extends HttpServlet {
     	criteriaTotal_Course.setT_Course_Assessment(t_Course_Assessment);
     	criteriaTotal_Course.setT_Course_Price(t_Course_Price);
     	criteriaTotal_Course.setT_Course_Category(t_Course_Category);
-    	criteriaTotal_Course.setT_Course_Times(t_Course_Times);
-    	
+    	criteriaTotal_Course.setT_Course_Times(t_Course_Times);    	
         Map<String, Object>  map=new HashMap<String, Object>();
 
         	try {
         		java.util.List<Total_Course> list=total_CourseDAO.getForListWithCriteriaTotal_Course(criteriaTotal_Course);
+        		java.util.List<Json_Total_Course> jsonlist=new ArrayList<>();
+        		for(Total_Course course:list){
+        			jsonlist.add(new Json_Total_Course(course));
+        		}
 				map.put("result", 1);
-				map.put("courselist", list);
+				map.put("total_courseinfoList", jsonlist);
 				
 			} catch (Exception e) {
 				map.put("result", 0);
@@ -233,7 +237,13 @@ public class Search extends HttpServlet {
         Map<String, Object>  map=new HashMap<String, Object>();
 
         	try {
-        		map.put("total_courseinfoList", total_CourseDAO.getFromTeacherID(teacherID));
+        		
+        		java.util.List<Total_Course> list=total_CourseDAO.getFromTeacherID(teacherID);
+        		java.util.List<Json_Total_Course> jsonlist=new ArrayList<>();
+        		for(Total_Course course:list){
+        			jsonlist.add(new Json_Total_Course(course));
+        		}
+        		map.put("total_courseinfoList", jsonlist);
 				map.put("result", 1);
 				
 			} catch (Exception e) {
@@ -259,7 +269,12 @@ public class Search extends HttpServlet {
         Map<String, Object>  map=new HashMap<String, Object>();
 
         	try {
-        		map.put("total_courseinfoList", total_CourseDAO.getFromTeacherID(institutionID));
+        		java.util.List<Total_Course> list=total_CourseDAO.getFromInstitutionID(institutionID);
+        		java.util.List<Json_Total_Course> jsonlist=new ArrayList<>();
+        		for(Total_Course course:list){
+        			jsonlist.add(new Json_Total_Course(course));
+        		}
+        		map.put("total_courseinfoList", jsonlist);
 				map.put("result", 1);
 				
 			} catch (Exception e) {
