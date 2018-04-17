@@ -11,8 +11,8 @@ public class Total_CourseDAOJdbcImpl extends DAO<Total_Course> implements Total_
 
 	@Override
 	public void updatenew(Total_Course total_Course) {
-		String sql="update t_Total_Course SET t_Course_Name=?,t_Course_Teacher_ID=?,t_Teacher_Students_ID=?,t_Course_Institution_ID=?,t_Course_Classrooms=?"
-				+ "t_Course_Deadline_Date=?,t_Course_Start_Date=?,t_Course_Week_Day=?,t_Course_Day_Start_Time=?,t_Course_Day_End_Time=?,t_Course_Times=?"
+		String sql="update t_Total_Course SET t_Course_Name=?,t_Course_Teacher_ID=?,t_Teacher_Students_ID=?,t_Course_Institution_ID=?,t_Course_Classrooms=?,"
+				+ "t_Course_Deadline_Date=?,t_Course_Start_Date=?,t_Course_Week_Day=?,t_Course_Day_Start_Time=?,t_Course_Day_End_Time=?,t_Course_Times=?,"
 				+ "t_Course_Max_Students=?,t_Course_Price=?,t_Course_Category=?,t_Course_Assessment=? WHERE t_Course_ID=?";
 		update(sql, total_Course.getT_Course_Name(),total_Course.getT_Course_Teacher_ID(),total_Course.getT_Teacher_Students_ID(),total_Course.getT_Course_Institution_ID(),
 				total_Course.getT_Course_Classrooms(),total_Course.getT_Course_Deadline_Date(),total_Course.getT_Course_Start_Date(),total_Course.getT_Course_Week_Day(),

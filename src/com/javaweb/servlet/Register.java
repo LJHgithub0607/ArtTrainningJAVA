@@ -237,7 +237,7 @@ public class Register extends HttpServlet {
         	institution.setT_Institution_Adress(address);
         	try {
         		student.setT_Student_Authority(2);
-        		studentDAO.save(student);
+        		studentDAO.updatenew(student);
 				institutionDAO.save(institution);
 				map.put("result", 1);
 			} catch (Exception e) {

@@ -3,7 +3,7 @@ package com.javaweb.domain;
 public class Course {
 	private Integer t_Course_ID;
 	private Integer t_Course_theCourse_ID;//total_courseID
-	private Integer t_Couser_Student_ID;
+	private Integer t_Course_Student_ID;
 	private Integer t_Course_Total_Time;
 	private String 	t_Course_DateOfLeave;
 	public String getT_Course_DateOfLeave() {
@@ -24,11 +24,12 @@ public class Course {
 	public void setT_Course_theCourse_ID(Integer t_Course_theCourse_ID) {
 		this.t_Course_theCourse_ID = t_Course_theCourse_ID;
 	}
-	public Integer getT_Couser_Student_ID() {
-		return t_Couser_Student_ID;
+
+	public Integer getT_Course_Student_ID() {
+		return t_Course_Student_ID;
 	}
-	public void setT_Couser_Student_ID(Integer t_Couser_Student_ID) {
-		this.t_Couser_Student_ID = t_Couser_Student_ID;
+	public void setT_Course_Student_ID(Integer t_Course_Student_ID) {
+		this.t_Course_Student_ID = t_Course_Student_ID;
 	}
 	public Integer getT_Course_Total_Time() {
 		return t_Course_Total_Time;
@@ -39,7 +40,7 @@ public class Course {
 	@Override
 	public String toString() {
 		return "Course [t_Course_ID=" + t_Course_ID + ", t_Course_theCourse_ID=" + t_Course_theCourse_ID
-				+ ", t_Couser_Student_ID=" + t_Couser_Student_ID + ", t_Course_Total_Time=" + t_Course_Total_Time
+				+ ", t_Couser_Student_ID=" + t_Course_Student_ID + ", t_Course_Total_Time=" + t_Course_Total_Time
 				+ ", t_Course_DateOfLeave=" + t_Course_DateOfLeave + "]";
 	}
 	

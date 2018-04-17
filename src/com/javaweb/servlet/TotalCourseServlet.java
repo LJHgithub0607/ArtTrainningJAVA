@@ -86,6 +86,7 @@ public class TotalCourseServlet extends HttpServlet {
         String[] totalstudentID=total_Course.getT_Teacher_Students_ID().split(",");
         if(totalstudentID.length<total_Course.getT_Course_Max_Students()){
         	total_Course.setT_Teacher_Students_ID(total_Course.getT_Teacher_Students_ID()+studentID+",");
+        	total_CourseDAO.updatenew(total_Course);
         	map.put("result", 1);
         }else{
         	map.put("result", 0);
@@ -113,6 +114,7 @@ public class TotalCourseServlet extends HttpServlet {
         try {
 			course.setT_Course_Total_Time(course.getT_Course_Total_Time()-1);
 			course.setT_Course_DateOfLeave(course.getT_Course_DateOfLeave()+dateofleave+",");
+			courseDAO.updatenew(course);
 			//TODO Remind the teacher for leave information
 			map.put("result", 1);
 		} catch (Exception e) {

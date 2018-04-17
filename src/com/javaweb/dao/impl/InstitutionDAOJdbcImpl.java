@@ -8,7 +8,7 @@ public class InstitutionDAOJdbcImpl extends DAO<Institution> implements Institut
 
 	@Override
 	public void updatenew(Institution institution) {
-		String sql="UPDATE t_Institution SET t_Institution_User_Name=?,t_Institution_User_Password=?,t_Institution_Real_Name=?,t_Institution_Phone=?"
+		String sql="UPDATE t_Institution SET t_Institution_User_Name=?,t_Institution_User_Password=?,t_Institution_Real_Name=?,t_Institution_Phone=?,"
 				+ "t_Institution_Adress=?,t_Institution_Assessment=?,WHERE t_Institution_ID = ? ";
 		update(sql,institution.getT_Institution_User_Name(),institution.getT_Institution_User_Password(),institution.getT_Institution_Real_Name(),institution.getT_Institution_Phone(),institution.getT_Institution_Adress(),institution.getT_Institution_Assessment(),institution.getT_Institution_ID() );		
 		
