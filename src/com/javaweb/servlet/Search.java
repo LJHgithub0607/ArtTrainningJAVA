@@ -132,6 +132,32 @@ public class Search extends HttpServlet {
         writer.close();  
 	}
 	
+	private void SearchInstitutionInfoWithName(HttpServletRequest request,HttpServletResponse response) throws ServletException,IOException {
+        response.setContentType("text/html;charset=utf-8");  
+        request.setCharacterEncoding("utf-8");  
+        response.setCharacterEncoding("utf-8");  
+        PrintWriter writer = response.getWriter();
+        String realname=request.getParameter("t_Institution_Real_Name");
+       
+        Map<String, Object>  map=new HashMap<String, Object>();
+
+        	try {
+        		
+				map.put("result", 1);
+				map.put("institutionlist", institutionDAO.getFromRealName(realname));
+				
+			} catch (Exception e) {
+				map.put("result", 0);
+				e.printStackTrace();
+			}
+
+            String jsonString=JSONSerializer.toJSON(map).toString();  
+            writer.println(jsonString);  
+       
+        writer.flush();  
+        writer.close();  
+	}
+	
 	private void ConditionSearchCourse(HttpServletRequest request,HttpServletResponse response) throws ServletException,IOException {
         response.setContentType("text/html;charset=utf-8");  
         request.setCharacterEncoding("utf-8");  

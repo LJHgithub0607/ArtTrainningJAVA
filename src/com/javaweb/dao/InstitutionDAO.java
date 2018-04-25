@@ -10,4 +10,5 @@ public interface InstitutionDAO {
 	public void delete(Integer ID);
 	public Institution getFromID(Integer ID);
 	public Institution getFromUserName(String username);
+	public List<Institution> getFromRealName(String realname);
 }

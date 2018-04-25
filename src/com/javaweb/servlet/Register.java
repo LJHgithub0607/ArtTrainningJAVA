@@ -227,13 +227,14 @@ public class Register extends HttpServlet {
         PrintWriter writer = response.getWriter();
         Integer studentID=Integer.parseInt(request.getParameter("t_Student_ID"));
         String address=request.getParameter("t_Institution_Adress");
+        String realname=request.getParameter("t_Institution_Real_Name");
         Student student=studentDAO.getFromID(studentID);
         Map<String, Object>  map=new HashMap<String, Object>();
         	Institution institution=new Institution();
         	institution.setT_Institution_User_Name(student.getT_Student_User_Name());
         	institution.setT_Institution_User_Password(student.getT_Student_User_Password());
         	institution.setT_Institution_Phone(student.getT_Student_Phone_Number());
-        	institution.setT_Institution_Real_Name(student.getT_Student_RealName());
+        	institution.setT_Institution_Real_Name(realname);
         	institution.setT_Institution_Adress(address);
         	try {
         		student.setT_Student_Authority(2);

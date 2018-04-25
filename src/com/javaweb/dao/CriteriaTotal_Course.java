@@ -11,7 +11,7 @@ public class CriteriaTotal_Course {
 		if (t_Course_Name=="") {
 			t_Course_Name="%%";
 		}else{
-//			t_Course_Name="%"+t_Course_Name+"%";
+			t_Course_Name="%"+t_Course_Name+"%";
 		}
 		return t_Course_Name;
 	}

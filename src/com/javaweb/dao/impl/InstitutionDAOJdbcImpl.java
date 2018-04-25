@@ -1,5 +1,7 @@
 package com.javaweb.dao.impl;
 
+import java.util.List;
+
 import com.javaweb.dao.DAO;
 import com.javaweb.dao.InstitutionDAO;
 import com.javaweb.domain.Institution;
@@ -37,5 +39,16 @@ public class InstitutionDAOJdbcImpl extends DAO<Institution> implements Institut
 	public Institution getFromUserName(String username){
 		String sql="SELECT * FROM t_Institution WHERE t_Institution_User_Name = ? ";
 		return get(sql, username);
+	}
+
+	@Override
+	public List<Institution> getFromRealName(String realname) {
+		if (realname=="") {
+			realname="%%";
+		}else{
+			realname="%"+realname+"%";
+		}
+		String sql="SELECT * FROM t_Institution WHERE t_Institution_Real_Name Like ? ";
+		return getForList(sql, realname);
 	}
 }

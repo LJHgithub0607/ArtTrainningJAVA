@@ -7,11 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="/javaweb/Search/SearchCourseInfoWithInstitutionID" method="post">
+<form action="/javaweb/Search/SearchInstitutionInfoWithName" method="post">
  	<table>
  		<tr>
- 		    <td>t_Institution_ID:</td>
- 		    <td><input type="text" name="t_Institution_ID"/></td>
+ 		    <td>t_Institution_Real_Name:</td>
+ 		    <td><input type="text" name="t_Institution_Real_Name"/></td>
  		</tr>	 
  		 <tr>
  		    <td><input type="submit" value="submit"/></td>
