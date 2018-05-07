@@ -37,10 +37,9 @@ public class TimerThreadExecutor implements Runnable {
 		List<Course> courselist= courseDAO.getForListWithTotalCourseID(totalcourseID);
 		Integer totalcost=0;
 		Integer price=total_CourseDAO.getFromID(totalcourseID).getT_Course_Price();
-		java.util.Iterator<Course> iterator=courselist.iterator();
-		while (iterator.hasNext()) {
-			totalcost+=iterator.next().getT_Course_Total_Time()*price;
-			
+		for(Course course:courselist){
+			totalcost+=course.getT_Course_Total_Time()*price;
+			courseDAO.delete(course.getT_Course_ID());
 		}
 		//TODO remind payment system the totalcost of this course
 		total_CourseDAO.delete(totalcost);

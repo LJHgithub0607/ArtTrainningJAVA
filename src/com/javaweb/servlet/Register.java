@@ -17,14 +17,17 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.omg.CORBA.PRIVATE_MEMBER;
 
+import com.javaweb.dao.CourseDAO;
 import com.javaweb.dao.InstitutionDAO;
 import com.javaweb.dao.StudentDAO;
 import com.javaweb.dao.TeacherDAO;
+import com.javaweb.dao.impl.CourseDAOJdbcImpl;
 import com.javaweb.dao.impl.InstitutionDAOJdbcImpl;
 import com.javaweb.dao.impl.StudentDAOJdbcImpl;
 import com.javaweb.dao.impl.TeacherDAOJdbcImpl;
 import com.javaweb.domain.Student;
 import com.javaweb.domain.Teacher;
+import com.javaweb.domain.Course;
 import com.tools.RequestTool;
 import com.javaweb.domain.Institution;
 import net.sf.json.JSONSerializer;
@@ -38,6 +41,7 @@ public class Register extends HttpServlet {
 	private TeacherDAO teacherDAO=new TeacherDAOJdbcImpl();
     private StudentDAO studentDAO=new StudentDAOJdbcImpl();
     private InstitutionDAO institutionDAO =new InstitutionDAOJdbcImpl();
+    private CourseDAO courseDAO=new CourseDAOJdbcImpl();
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -297,5 +301,30 @@ public class Register extends HttpServlet {
 	}
 	private boolean IfNotExist(String username){
 		return studentDAO.getFromUseName(username)==null;
+	}
+	
+	private void Course(HttpServletRequest request,HttpServletResponse response) throws ServletException,IOException, ParseException{
+        response.setContentType("text/html;charset=utf-8");  
+        request.setCharacterEncoding("utf-8");  
+        response.setCharacterEncoding("utf-8");  
+        PrintWriter writer = response.getWriter();
+      
+        Map<String, Object>  map=new HashMap<String, Object>();
+    	Course course=new Course();
+    	RequestTool.getParameter(course, request);
+    	
+    	try {
+			courseDAO.save(course);
+			map.put("result", 1);
+		} catch (Exception e) {
+			map.put("result", 0);
+			e.printStackTrace();
+		}
+        String jsonString=JSONSerializer.toJSON(map).toString();  
+        writer.println(jsonString);  
+   
+    writer.flush();  
+    writer.close();  
+    	
 	}
 }
