@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="/javaweb/Search/SearchInstitutionInfoWithName" method="post">
+<form action="/javaweb/Search/SearchAllCourse" method="post">
  	<table>
  		<tr>
  		    <td>t_Institution_Real_Name:</td>

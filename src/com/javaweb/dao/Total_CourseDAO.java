@@ -10,6 +10,7 @@ public interface Total_CourseDAO {
 	public void delete(Integer ID);
 	public Integer getID(String name,Integer teacherID,Integer courseinstitutionID);
 	public Total_Course getFromID(Integer ID);
+	public List<Total_Course> getAll();
 	public List<Total_Course> getFromTeacherID(Integer teacherID);
 	public List<Total_Course> getFromInstitutionID(Integer InstitutionID);
 	public List<Total_Course> getForListWithCriteriaTotal_Course(CriteriaTotal_Course criteriaTotal_Course);

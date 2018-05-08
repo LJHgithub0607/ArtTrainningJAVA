@@ -69,4 +69,10 @@ public class Total_CourseDAOJdbcImpl extends DAO<Total_Course> implements Total_
 		return getForList(sql, criteriaTotal_Course.getT_Course_Name(),criteriaTotal_Course.getT_Course_Assessment(),criteriaTotal_Course.getT_Course_Price(),criteriaTotal_Course.getT_Course_Category(),criteriaTotal_Course.getT_Course_Times());
 	}
 
+	@Override
+	public List<Total_Course> getAll() {
+		String sql="SELECT * FROM t_Total_Course";
+		return getForList(sql);
+	}
+
 }

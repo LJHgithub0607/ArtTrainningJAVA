@@ -77,6 +77,35 @@ public class Search extends HttpServlet {
 		
 	}
 	
+	private void SearchAllCourse(HttpServletRequest request,HttpServletResponse response) throws ServletException,IOException {
+        response.setContentType("text/html;charset=utf-8");  
+        request.setCharacterEncoding("utf-8");  
+        response.setCharacterEncoding("utf-8");  
+        PrintWriter writer = response.getWriter();      
+        Map<String, Object>  map=new HashMap<String, Object>();
+
+        	try {
+        		
+        		java.util.List<Total_Course> list=total_CourseDAO.getAll();
+        		java.util.List<Json_Total_Course> jsonlist=new ArrayList<>();
+        		for(Total_Course course:list){
+        			jsonlist.add(new Json_Total_Course(course));
+        		}
+				map.put("result", 1);
+				map.put("courselist", jsonlist);
+				
+			} catch (Exception e) {
+				map.put("result", 0);
+				e.printStackTrace();
+			}
+
+            String jsonString=JSONSerializer.toJSON(map).toString();  
+            writer.println(jsonString);  
+       
+        writer.flush();  
+        writer.close();  
+	}
+	
 	private void StudentSearchAllCourse(HttpServletRequest request,HttpServletResponse response) throws ServletException,IOException {
         response.setContentType("text/html;charset=utf-8");  
         request.setCharacterEncoding("utf-8");  

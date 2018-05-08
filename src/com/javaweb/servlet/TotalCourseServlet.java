@@ -157,10 +157,15 @@ public class TotalCourseServlet extends HttpServlet {
 //    	total_course.setT_Course_Times(coursetimes);
 //    	total_course.setT_Course_Max_Students(maxstudents);
 		
-    	total_CourseDAO.save(total_course);
-    	Integer courseID =total_CourseDAO.getID(name, teacherID, courseinstitutionID);
-    	java.util.Date now=new java.util.Date();
-    	pool.execute(new TimerThreadExecutor(courseID,deadlinedate.getTime()-now.getTime()));
+    	try {
+			total_CourseDAO.save(total_course);
+			Integer courseID =total_CourseDAO.getID(name, teacherID, courseinstitutionID);
+			java.util.Date now=new java.util.Date();
+			pool.execute(new TimerThreadExecutor(courseID,deadlinedate.getTime()-now.getTime()));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     	
 	}
 
